@@ -3,5 +3,6 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="education">Education</string>
+    <string name="task_on_pathway">Task on pathway</string>
 
 </resources>
