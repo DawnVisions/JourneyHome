@@ -11,22 +11,33 @@
 
         <ImageView
             android:id="@+id/task_list_image"
-            android:layout_width="100dp"
+            android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_weight="1"
+            android:layout_weight="0"
             android:clickable="true"
             android:contentDescription="@string/task_on_pathway"
             android:focusable="true"
+            android:scaleType="fitXY"
             app:srcCompat="@drawable/ic_task" />
 
         <TextView
             android:id="@+id/task_description"
-            android:layout_width="match_parent"
+            android:layout_width="258dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center_vertical"
             android:paddingLeft="8dp"
             android:paddingRight="8dp"
             android:text="Sample task description" />
+
+        <ImageButton
+            android:id="@+id/more_info_button"
+            style="@style/Widget.AppCompat.ImageButton"
+            android:layout_width="45dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0"
+            android:background="@android:color/transparent"
+            android:tint="@android:color/darker_gray"
+            app:srcCompat="@drawable/ic_info_black_24dp" />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

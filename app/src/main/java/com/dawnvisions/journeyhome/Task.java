@@ -8,7 +8,7 @@ public class Task
     boolean active;
 
     //If item can be clicked to open up a new activity with more information
-    private boolean moreContent;
+    boolean moreContent;
 
     public Task(Integer taskNumber, String instruction, boolean moreContent, boolean active)
     {

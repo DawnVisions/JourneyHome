@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -53,6 +54,11 @@ public class TaskViewAdapter extends RecyclerView.Adapter<TaskViewAdapter.ViewHo
                 holder.itemView.setVisibility(View.GONE);
                 holder.itemView.setLayoutParams(new RecyclerView.LayoutParams(0, 0));
             }
+            if(!item.moreContent)
+            {
+                //holder.infoButton.setVisibility(View.INVISIBLE);
+                //TODO: Fix visibility bug
+            }
 
     }
 
@@ -66,11 +72,13 @@ public class TaskViewAdapter extends RecyclerView.Adapter<TaskViewAdapter.ViewHo
     {
         public ImageView imageView;
         public TextView descriptionTv;
+        public ImageButton infoButton;
         public ViewHolder(View itemView) {
             super(itemView);
 
             imageView = itemView.findViewById(R.id.task_list_image);
             descriptionTv = itemView.findViewById(R.id.task_description);
+            infoButton = itemView.findViewById(R.id.more_info_button);
         }
     }
 
