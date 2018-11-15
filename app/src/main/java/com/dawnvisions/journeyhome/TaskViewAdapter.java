@@ -38,15 +38,22 @@ public class TaskViewAdapter extends RecyclerView.Adapter<TaskViewAdapter.ViewHo
     public void onBindViewHolder(TaskViewAdapter.ViewHolder holder, int position)
     {
         Task item = tasks.get(position);
-        if(item.completed)
-        {
-            holder.imageView.setImageResource(R.drawable.ic_completed_task);
-        }
-        else
-        {
-            holder.imageView.setImageResource(R.drawable.ic_task);
-        }
-        holder.descriptionTv.setText(item.instruction);
+
+            if (item.completed)
+            {
+                holder.imageView.setImageResource(R.drawable.ic_completed_task);
+            }
+            else
+            {
+                holder.imageView.setImageResource(R.drawable.ic_task);
+            }
+            holder.descriptionTv.setText(item.instruction);
+            if (!item.active)
+            {
+                holder.itemView.setVisibility(View.GONE);
+                holder.itemView.setLayoutParams(new RecyclerView.LayoutParams(0, 0));
+            }
+
     }
 
     @Override

@@ -5,22 +5,33 @@ public class Task
     Integer taskNumber;
     String instruction;
     boolean completed;
+    boolean active;
 
     //If item can be clicked to open up a new activity with more information
     private boolean moreContent;
 
-    public Task(Integer taskNumber, String instruction, boolean moreContent)
+    public Task(Integer taskNumber, String instruction, boolean moreContent, boolean active)
     {
         this.taskNumber = taskNumber;
         this.instruction = instruction;
         this.completed = false;
         this.moreContent = moreContent;
+        this.active = active;
     }
 
-    private boolean changeCompleted()
+    public boolean changeCompleted()
     {
-        completed = !completed;
+        completed = ! completed;
         return completed;
     }
 
+    public void setActive(Boolean active)
+    {
+        this.active = active;
+    }
+
+    public void setInstruction(String instruction)
+    {
+        this.instruction = instruction;
+    }
 }

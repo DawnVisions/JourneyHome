@@ -1,0 +1,22 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <SwitchPreference
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:defaultValue="false"
+        android:icon="@drawable/ic_directions_black_24dp"
+        android:key="respiratory_switch"
+        android:summary="Additional steps for babies needing long term breathing support"
+        android:theme="@style/Preference"
+        android:title="Respiratory Detour" />
+
+    <SwitchPreference
+        android:defaultValue="false"
+        android:icon="@drawable/ic_directions_black_24dp"
+        android:key="feeding_switch"
+        android:summary="Additional steps for babies needing long term feeding support"
+        android:theme="@style/Preference"
+        android:title="Feeding Detour" />
+
+
+</PreferenceScreen>
