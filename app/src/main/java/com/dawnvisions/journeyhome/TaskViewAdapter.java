@@ -9,7 +9,9 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import java.util.LinkedList;
 import java.util.List;
 
 
@@ -21,7 +23,16 @@ public class TaskViewAdapter extends RecyclerView.Adapter<TaskViewAdapter.ViewHo
 
     public TaskViewAdapter(Context context, List<Task> objects)
     {
-        tasks = objects;
+        LinkedList<Task> activeTasks = new LinkedList<Task>();
+        for (Task task : objects)
+        {
+            if (task.active)
+            {
+                activeTasks.add(task);
+            }
+        }
+        tasks = activeTasks;
+
         mContext = context;
     }
 
@@ -38,7 +49,9 @@ public class TaskViewAdapter extends RecyclerView.Adapter<TaskViewAdapter.ViewHo
     @Override
     public void onBindViewHolder(TaskViewAdapter.ViewHolder holder, int position)
     {
-        Task item = tasks.get(position);
+        final Task item = tasks.get(position);
+
+            holder.descriptionTv.setText(item.instruction);
 
             if (item.completed)
             {
@@ -48,17 +61,35 @@ public class TaskViewAdapter extends RecyclerView.Adapter<TaskViewAdapter.ViewHo
             {
                 holder.imageView.setImageResource(R.drawable.ic_task);
             }
-            holder.descriptionTv.setText(item.instruction);
-            if (!item.active)
-            {
-                holder.itemView.setVisibility(View.GONE);
-                holder.itemView.setLayoutParams(new RecyclerView.LayoutParams(0, 0));
-            }
+
             if(!item.moreContent)
             {
-                //holder.infoButton.setVisibility(View.INVISIBLE);
-                //TODO: Fix visibility bug
+                holder.infoButton.setVisibility(View.INVISIBLE);
             }
+            else
+            {
+                holder.infoButton.setVisibility(View.VISIBLE);
+            }
+
+        holder.descriptionTv.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                //TODO: Dialog to complete task
+                Toast.makeText(mContext, "Complete task " + item.instruction, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        holder.infoButton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                //TODO: Open up more info activity
+                Toast.makeText(mContext, "More information " + item.instruction, Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
 
