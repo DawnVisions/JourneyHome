@@ -1,5 +1,6 @@
 package com.dawnvisions.journeyhome;
 
+        import android.content.DialogInterface;
         import android.content.SharedPreferences;
         import android.os.Bundle;
         import android.preference.Preference;
@@ -50,7 +51,7 @@ public class Dashboard extends Fragment
         TaskSource.FeedingDetour(detour);
 
         //Fill recycler view with tasks
-        TaskViewAdapter adapter = new TaskViewAdapter(view.getContext(), TaskSource.tasks);
+        final TaskViewAdapter adapter = new TaskViewAdapter(view.getContext(), TaskSource.tasks);
         RecyclerView recyclerView = view.findViewById(R.id.dashboard_recycler);
         recyclerView.setAdapter(adapter);
     }

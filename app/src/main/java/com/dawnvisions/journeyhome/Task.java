@@ -19,11 +19,9 @@ public class Task
         this.active = active;
     }
 
-    public boolean changeCompleted()
-    {
-        completed = ! completed;
-        return completed;
-    }
+    public boolean isCompleted() {return completed;}
+
+    public void setCompleted(boolean completed) { this.completed = completed; }
 
     public void setActive(Boolean active)
     {
@@ -34,4 +32,6 @@ public class Task
     {
         this.instruction = instruction;
     }
+
+    public String getInstruction() {return this.instruction;}
 }

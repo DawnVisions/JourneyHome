@@ -1,7 +1,10 @@
 package com.dawnvisions.journeyhome;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.support.annotation.NonNull;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,7 +13,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import android.support.v4.app.DialogFragment;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -56,10 +59,14 @@ public class TaskViewAdapter extends RecyclerView.Adapter<TaskViewAdapter.ViewHo
             if (item.completed)
             {
                 holder.imageView.setImageResource(R.drawable.ic_completed_task);
+                holder.descriptionTv.setBackgroundResource(R.color.tertiaryLightColor);
+                holder.infoButton.setBackgroundResource(R.color.tertiaryLightColor);
             }
             else
             {
                 holder.imageView.setImageResource(R.drawable.ic_task);
+                holder.descriptionTv.setBackgroundResource(R.color.LightGrey);
+                holder.infoButton.setBackgroundResource(R.color.LightGrey);
             }
 
             if(!item.moreContent)
@@ -71,16 +78,22 @@ public class TaskViewAdapter extends RecyclerView.Adapter<TaskViewAdapter.ViewHo
                 holder.infoButton.setVisibility(View.VISIBLE);
             }
 
-        holder.descriptionTv.setOnClickListener(new View.OnClickListener()
+        //Open complete dialog when user taps on item image or description
+        View.OnClickListener listener = new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
-                //TODO: Dialog to complete task
-                Toast.makeText(mContext, "Complete task " + item.instruction, Toast.LENGTH_SHORT).show();
+                DialogFragment dialog = CompleteTask.newInstance(1, item);
+                dialog.show(((AppCompatActivity) mContext).getSupportFragmentManager(), "dialog");
+                //TODO: Update data set after dialog dismissed
+                notifyDataSetChanged();
             }
-        });
+        };
+        holder.descriptionTv.setOnClickListener(listener);
+        holder.imageView.setOnClickListener(listener);
 
+        //Open more info activity when user taps on info button
         holder.infoButton.setOnClickListener(new View.OnClickListener()
         {
             @Override
