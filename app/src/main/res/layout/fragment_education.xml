@@ -1,13 +1,159 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Education">
+    android:background="@drawable/ic_pattern_background"
+    tools:context=".Education"
+    tools:layout_editor_absoluteY="25dp">
 
-    <TextView
+    <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Education ToDo" />
+        android:layout_height="wrap_content"
+        android:background="@color/secondaryDarkColor"
+        android:orientation="vertical"
+        android:padding="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.19999999">
 
-</FrameLayout>
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/cambay"
+            android:text="I Know How To: "
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <CheckBox
+            android:id="@+id/checkBox6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:buttonTint="@color/secondaryLightColor"
+            android:saveEnabled="true"
+            android:shadowColor="@color/secondaryDarkColor"
+            android:text="Change a diaper"
+            tools:text="Change a diaper" />
+
+        <CheckBox
+            android:id="@+id/checkBox7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Check a temperature"
+            tools:text="Check a temperature"
+            android:buttonTint="@color/secondaryLightColor"/>
+
+        <CheckBox
+            android:id="@+id/checkBox8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Give a bath"
+            tools:text="Give a bath"
+            android:buttonTint="@color/secondaryLightColor"/>
+
+        <CheckBox
+            android:id="@+id/checkBox9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Feed my baby"
+            tools:text="Feed my baby"
+            android:buttonTint="@color/secondaryLightColor"/>
+
+        <CheckBox
+            android:id="@+id/checkBox10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Make feeding recipe"
+            tools:text="Make feeding recipe"
+            android:buttonTint="@color/secondaryLightColor"/>
+
+        <CheckBox
+            android:id="@+id/checkBox11"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Give my baby medicine"
+            tools:text="Give my baby medicine"
+            android:buttonTint="@color/secondaryLightColor"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/secondaryDarkColor"
+        android:orientation="vertical"
+        android:padding="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="0.7">
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="0dp"
+            android:fontFamily="@font/cambay"
+            android:text="Discharge Videos: "
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.502"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.44" />
+
+        <CheckBox
+            android:id="@+id/checkBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Car Seat Safety"
+            tools:layout_editor_absoluteX="111dp"
+            tools:layout_editor_absoluteY="289dp"
+            tools:text="Car Seat Safety"
+            android:buttonTint="@color/secondaryLightColor"/>
+
+        <CheckBox
+            android:id="@+id/checkBox2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Home Safety"
+            tools:text="Home Safety"
+            android:buttonTint="@color/secondaryLightColor"/>
+
+        <CheckBox
+            android:id="@+id/checkBox3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Period of Purple Crying"
+            tools:text="Period of Purple Crying"
+            android:buttonTint="@color/secondaryLightColor"/>
+
+        <CheckBox
+            android:id="@+id/checkBox4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Safe Sleep"
+            tools:text="Safe Sleep"
+            android:buttonTint="@color/secondaryLightColor"/>
+
+        <CheckBox
+            android:id="@+id/checkBox5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Infant CPR"
+            tools:text="Infant CPR"
+            android:buttonTint="@color/secondaryLightColor"/>
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
