@@ -15,8 +15,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import database.DataSource;
+import database.TaskSource;
+
 public class MainActivity extends AppCompatActivity
 {
+    public DataSource mDataSource;
+
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener()
     {
@@ -57,6 +62,9 @@ public class MainActivity extends AppCompatActivity
         BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
+        mDataSource = new DataSource(this);
+        mDataSource.open();
+        mDataSource.getCompletedFromDatabase(TaskSource.tasks);
     }
 
     @Override
@@ -97,5 +105,13 @@ public class MainActivity extends AppCompatActivity
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.content_frame, fragment).addToBackStack(null);
         ft.commit();
+    }
+
+    @Override
+    protected void onStop()
+    {
+        mDataSource.setCompletedToDatabase(TaskSource.tasks);
+        mDataSource.close();
+        super.onStop();
     }
 }

@@ -7,6 +7,7 @@
         android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="8dp"
         android:text="Tip: You can also click on the info button next to the description for more information on this task"
         android:textAlignment="center" />
 </LinearLayout>

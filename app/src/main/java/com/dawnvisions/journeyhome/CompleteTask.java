@@ -11,19 +11,22 @@ import android.view.LayoutInflater;
 public class CompleteTask extends DialogFragment
 {
     Task task;
+    OnCompleteTask onCompleteTask;
 
-    public static CompleteTask newInstance(int arg, Task task) {
+    public static CompleteTask newInstance(int arg, Task task, OnCompleteTask delegate) {
         CompleteTask frag = new CompleteTask();
         Bundle args = new Bundle();
         args.putInt("count", arg);
         frag.setArguments(args);
         frag.setComplexVariable(task);
+        frag.setComplexVariable(delegate);
         return frag;
     }
 
     public void setComplexVariable(Task task) {
         this.task = task;
     }
+    public void setComplexVariable(OnCompleteTask delegate) { this.onCompleteTask = delegate; }
 
     @NonNull
     @Override
@@ -32,13 +35,14 @@ public class CompleteTask extends DialogFragment
         final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         if(task.isCompleted())
         {
-            builder.setMessage("Do you want to re-activate: " + task.getInstruction() + "?");
-            builder.setPositiveButton("Re-activate", new DialogInterface.OnClickListener()
+            builder.setMessage("Do you want to mark as incomplete: " + task.getInstruction() + "?");
+            builder.setPositiveButton("Mark Incomplete", new DialogInterface.OnClickListener()
             {
                 @Override
                 public void onClick(DialogInterface dialog, int which)
                 {
                     task.setCompleted(false);
+                    onCompleteTask.onComplete();
                 }
             });
             builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener()
@@ -52,8 +56,11 @@ public class CompleteTask extends DialogFragment
         }
         else
         {
-            LayoutInflater inflater = getActivity().getLayoutInflater();
-            builder.setView(inflater.inflate(R.layout.complete_dialog, null));
+            if(task.moreContent)
+            {
+                LayoutInflater inflater = getActivity().getLayoutInflater();
+                builder.setView(inflater.inflate(R.layout.complete_dialog, null));
+            }
             builder.setMessage("Do you want to complete: " + task.getInstruction() + "?");
             builder.setPositiveButton("Complete", new DialogInterface.OnClickListener()
             {
@@ -61,6 +68,7 @@ public class CompleteTask extends DialogFragment
                 public void onClick(DialogInterface dialog, int which)
                 {
                     task.setCompleted(true);
+                    onCompleteTask.onComplete();
                 }
             });
             builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener()

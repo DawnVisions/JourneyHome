@@ -1,5 +1,9 @@
 package com.dawnvisions.journeyhome;
 
+import android.content.ContentValues;
+
+import database.CompletedTaskTable;
+
 public class Task
 {
     Integer taskNumber;
@@ -34,4 +38,14 @@ public class Task
     }
 
     public String getInstruction() {return this.instruction;}
+
+    public int getTaskNumber() {return this.taskNumber;}
+
+    public ContentValues toValues()
+    {
+        ContentValues values = new ContentValues(2);
+        values.put(CompletedTaskTable.COLUMN_NUM, taskNumber);
+        values.put(CompletedTaskTable.COLUMN_COMPLETE, completed);
+        return values;
+    }
 }

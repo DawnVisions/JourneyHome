@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.support.v4.app.DialogFragment;
@@ -59,14 +60,12 @@ public class TaskViewAdapter extends RecyclerView.Adapter<TaskViewAdapter.ViewHo
             if (item.completed)
             {
                 holder.imageView.setImageResource(R.drawable.ic_completed_task);
-                holder.descriptionTv.setBackgroundResource(R.color.tertiaryLightColor);
-                holder.infoButton.setBackgroundResource(R.color.tertiaryLightColor);
+                holder.layout.setBackgroundResource(R.color.tertiaryLightColor);
             }
             else
             {
                 holder.imageView.setImageResource(R.drawable.ic_task);
-                holder.descriptionTv.setBackgroundResource(R.color.LightGrey);
-                holder.infoButton.setBackgroundResource(R.color.LightGrey);
+                holder.layout.setBackgroundResource(R.color.LightGrey);
             }
 
             if(!item.moreContent)
@@ -84,10 +83,15 @@ public class TaskViewAdapter extends RecyclerView.Adapter<TaskViewAdapter.ViewHo
             @Override
             public void onClick(View v)
             {
-                DialogFragment dialog = CompleteTask.newInstance(1, item);
+                DialogFragment dialog = CompleteTask.newInstance(1, item, new OnCompleteTask()
+                {
+                    @Override
+                    public void onComplete()
+                    {
+                        notifyDataSetChanged();
+                    }
+                });
                 dialog.show(((AppCompatActivity) mContext).getSupportFragmentManager(), "dialog");
-                //TODO: Update data set after dialog dismissed
-                notifyDataSetChanged();
             }
         };
         holder.descriptionTv.setOnClickListener(listener);
@@ -117,12 +121,14 @@ public class TaskViewAdapter extends RecyclerView.Adapter<TaskViewAdapter.ViewHo
         public ImageView imageView;
         public TextView descriptionTv;
         public ImageButton infoButton;
+        public LinearLayout layout;
         public ViewHolder(View itemView) {
             super(itemView);
 
             imageView = itemView.findViewById(R.id.task_list_image);
             descriptionTv = itemView.findViewById(R.id.task_description);
             infoButton = itemView.findViewById(R.id.more_info_button);
+            layout = itemView.findViewById(R.id.task_layout);
         }
     }
 
