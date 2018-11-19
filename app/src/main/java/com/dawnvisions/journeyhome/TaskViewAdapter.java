@@ -1,9 +1,7 @@
 package com.dawnvisions.journeyhome;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.support.annotation.NonNull;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -83,7 +81,7 @@ public class TaskViewAdapter extends RecyclerView.Adapter<TaskViewAdapter.ViewHo
             @Override
             public void onClick(View v)
             {
-                DialogFragment dialog = CompleteTask.newInstance(1, item, new OnCompleteTask()
+                DialogFragment dialog = CompleteTaskDialog.newInstance(1, item, new OnCompleteTask()
                 {
                     @Override
                     public void onComplete()

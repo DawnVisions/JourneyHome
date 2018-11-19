@@ -15,6 +15,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import java.util.Set;
+
 import database.DataSource;
 import database.TaskSource;
 
@@ -97,6 +99,12 @@ public class MainActivity extends AppCompatActivity
             startActivity(new Intent(this, SettingsActivity.class));
             return true;
         }
+        if (id == R.id.toolbar_user)
+        {
+            DialogFragment dialog = UserDialog.newInstance(1, mDataSource);
+            dialog.show(getSupportFragmentManager(), "dialog");
+            return true;
+        }
         return super.onOptionsItemSelected(item);
     }
 
@@ -108,10 +116,10 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
-    protected void onStop()
+    protected void onDestroy()
     {
         mDataSource.setCompletedToDatabase(TaskSource.tasks);
         mDataSource.close();
-        super.onStop();
+        super.onDestroy();
     }
 }

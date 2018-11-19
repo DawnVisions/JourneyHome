@@ -9,6 +9,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 import com.dawnvisions.journeyhome.Task;
 import java.util.List;
 
+import model.User;
+
 
 public class DataSource
 {
@@ -63,6 +65,26 @@ public class DataSource
             String[] selectionArgs = { Integer.toString(task.getTaskNumber()) };
             database.update(CompletedTaskTable.TABLE_ITEMS, values, selection, selectionArgs);
         }
+    }
+
+    public User getUserInfo()
+    {
+        Cursor cursor = database.query(UserInfoTable.TABLE_ITEMS, UserInfoTable.ALL_COLUMNS, null,null, null, null, null);
+        User u = new User();
+        while(cursor.moveToNext())
+        {
+            u.setName(cursor.getString(cursor.getColumnIndex(UserInfoTable.COLUMN_NAME)));
+            u.setBirth_day(cursor.getInt(cursor.getColumnIndex(UserInfoTable.COLUMN_BIRTH_DAY)));
+            u.setBirth_month(cursor.getInt(cursor.getColumnIndex(UserInfoTable.COLUMN_BIRTH_MONTH)));
+            u.setBirth_year(cursor.getInt(cursor.getColumnIndex(UserInfoTable.COLUMN_BIRTH_YEAR)));
+        }
+        return u;
+    }
+
+    public void setUser(User u)
+    {
+        database.delete(UserInfoTable.TABLE_ITEMS, null, null);
+        database.insert(UserInfoTable.TABLE_ITEMS, null, u.toValues());
     }
 }
 

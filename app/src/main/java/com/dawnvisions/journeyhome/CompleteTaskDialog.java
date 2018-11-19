@@ -8,13 +8,13 @@ import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 
-public class CompleteTask extends DialogFragment
+public class CompleteTaskDialog extends DialogFragment
 {
     Task task;
     OnCompleteTask onCompleteTask;
 
-    public static CompleteTask newInstance(int arg, Task task, OnCompleteTask delegate) {
-        CompleteTask frag = new CompleteTask();
+    public static CompleteTaskDialog newInstance(int arg, Task task, OnCompleteTask delegate) {
+        CompleteTaskDialog frag = new CompleteTaskDialog();
         Bundle args = new Bundle();
         args.putInt("count", arg);
         frag.setArguments(args);

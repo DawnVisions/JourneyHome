@@ -6,6 +6,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import com.dawnvisions.journeyhome.Task;
 
+import model.User;
+
 public class DBHelper extends SQLiteOpenHelper
 {
 
@@ -22,11 +24,15 @@ public class DBHelper extends SQLiteOpenHelper
     public void onCreate(SQLiteDatabase db)
     {
         db.execSQL(CompletedTaskTable.SQL_CREATE);
+        db.execSQL(UserInfoTable.SQL_CREATE);
 
         for (Task task: TaskSource.tasks)
         {
             db.insert(CompletedTaskTable.TABLE_ITEMS, null, task.toValues());
         }
+
+        User u = new User("My Baby", 0, 0, 0);
+        db.insert(UserInfoTable.TABLE_ITEMS, null, u.toValues());
     }
 
     @Override
