@@ -1,6 +1,5 @@
 package com.dawnvisions.journeyhome;
 
-import android.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -10,12 +9,12 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.TextView;
 
-import java.util.Set;
+import com.dawnvisions.journeyhome.Dashboard.Dashboard;
+import com.dawnvisions.journeyhome.Education.Education;
+import com.dawnvisions.journeyhome.Home.Home;
 
 import database.DataSource;
 import database.TaskSource;
@@ -116,11 +115,11 @@ public class MainActivity extends AppCompatActivity
         ft.commit();
     }
 
+
     @Override
-    protected void onDestroy()
+    protected void onStop()
     {
         mDataSource.setCompletedToDatabase(TaskSource.tasks);
-        mDataSource.close();
-        super.onDestroy();
+        super.onStop();
     }
 }

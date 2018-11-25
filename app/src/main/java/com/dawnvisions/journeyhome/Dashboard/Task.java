@@ -1,4 +1,4 @@
-package com.dawnvisions.journeyhome;
+package com.dawnvisions.journeyhome.Dashboard;
 
 import android.content.ContentValues;
 

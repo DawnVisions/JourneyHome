@@ -1,4 +1,4 @@
-package com.dawnvisions.journeyhome;
+package com.dawnvisions.journeyhome.Dashboard;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -14,6 +14,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.support.v4.app.DialogFragment;
+
+import com.dawnvisions.journeyhome.R;
+
 import java.util.LinkedList;
 import java.util.List;
 

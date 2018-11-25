@@ -1,4 +1,4 @@
-package com.dawnvisions.journeyhome;
+package com.dawnvisions.journeyhome.Home;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -9,6 +9,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+
+import com.dawnvisions.journeyhome.MainActivity;
+import com.dawnvisions.journeyhome.R;
 
 import org.joda.time.LocalDate;
 import org.joda.time.Period;

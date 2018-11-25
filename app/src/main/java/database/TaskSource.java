@@ -1,6 +1,6 @@
 package database;
 
-import com.dawnvisions.journeyhome.Task;
+import com.dawnvisions.journeyhome.Dashboard.Task;
 
 import java.util.ArrayList;
 

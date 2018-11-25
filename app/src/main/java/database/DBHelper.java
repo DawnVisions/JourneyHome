@@ -4,7 +4,7 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.dawnvisions.journeyhome.Task;
+import com.dawnvisions.journeyhome.Dashboard.Task;
 
 import model.EducationItem;
 import model.User;
