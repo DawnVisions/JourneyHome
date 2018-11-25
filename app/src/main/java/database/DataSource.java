@@ -7,8 +7,11 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import com.dawnvisions.journeyhome.Task;
+
+import java.util.ArrayList;
 import java.util.List;
 
+import model.EducationItem;
 import model.User;
 
 
@@ -85,6 +88,40 @@ public class DataSource
     {
         database.delete(UserInfoTable.TABLE_ITEMS, null, null);
         database.insert(UserInfoTable.TABLE_ITEMS, null, u.toValues());
+    }
+
+    public List<EducationItem> getEducationFromDatabase()
+    {
+        Cursor cursor = database.query(EducationTable.TABLE_ITEMS, EducationTable.ALL_COLUMNS, null,null, null, null, null);
+
+        List<EducationItem> educationItems = new ArrayList<>();
+        while(cursor.moveToNext())
+        {
+            EducationItem item = new EducationItem();
+            item.setId(cursor.getString(cursor.getColumnIndex(EducationTable.COLUMN_ID)));
+            item.setType(cursor.getString(cursor.getColumnIndex(EducationTable.COLUMN_TYPE)));
+            item.setText(cursor.getString(cursor.getColumnIndex(EducationTable.COLUMN_TEXT)));
+            int complete = (cursor.getInt(cursor.getColumnIndex(EducationTable.COLUMN_DONE)));
+            if(complete == 1)
+            {
+                item.setDone(true);
+            }
+            else
+            {
+                item.setDone(false);
+            }
+            educationItems.add(item);
+        }
+        return educationItems;
+    }
+
+    public void setEducationDone(String id, boolean done)
+    {
+        String selection = EducationTable.COLUMN_ID + " = ?";
+        String[] selectionArgs = { id };
+        ContentValues values = new ContentValues();
+        values.put(EducationTable.COLUMN_DONE, done);
+        database.update(EducationTable.TABLE_ITEMS, values, selection, selectionArgs);
     }
 }
 

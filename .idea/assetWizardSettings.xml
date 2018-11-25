@@ -18,12 +18,22 @@
                                 <PersistentState>
                                   <option name="children">
                                     <map>
+                                      <entry key="backgroundImage">
+                                        <value>
+                                          <PersistentState>
+                                            <option name="values">
+                                              <map>
+                                                <entry key="scalingPercent" value="161" />
+                                              </map>
+                                            </option>
+                                          </PersistentState>
+                                        </value>
+                                      </entry>
                                       <entry key="foregroundImage">
                                         <value>
                                           <PersistentState>
                                             <option name="values">
                                               <map>
-                                                <entry key="scalingPercent" value="141" />
                                                 <entry key="trimmed" value="true" />
                                               </map>
                                             </option>
@@ -34,11 +44,12 @@
                                   </option>
                                   <option name="values">
                                     <map>
-                                      <entry key="backgroundAssetType" value="COLOR" />
-                                      <entry key="backgroundColor" value="c2e1f6" />
-                                      <entry key="foregroundImage" value="$USER_HOME$/Desktop/journey_home_icon copy.png" />
-                                      <entry key="generateLegacyIcon" value="false" />
-                                      <entry key="generateWebIcon" value="false" />
+                                      <entry key="backgroundColor" value="ffffff" />
+                                      <entry key="backgroundImage" value="$PROJECT_DIR$/app/src/main/res/drawable/ic_pattern_background.png" />
+                                      <entry key="backgroundLayerName" value="ic_launcher_background" />
+                                      <entry key="foregroundImage" value="$PROJECT_DIR$/app/src/main/res/drawable/ic_sc_logo.png" />
+                                      <entry key="foregroundLayerName" value="ic_launcher_foreground" />
+                                      <entry key="outputName" value="ic_alternate_launcher" />
                                     </map>
                                   </option>
                                 </PersistentState>

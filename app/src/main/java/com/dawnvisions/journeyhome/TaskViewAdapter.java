@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -120,6 +121,7 @@ public class TaskViewAdapter extends RecyclerView.Adapter<TaskViewAdapter.ViewHo
         public TextView descriptionTv;
         public ImageButton infoButton;
         public LinearLayout layout;
+        public CheckBox checkBox;
         public ViewHolder(View itemView) {
             super(itemView);
 
