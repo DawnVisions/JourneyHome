@@ -74,19 +74,6 @@ public class MainActivity extends AppCompatActivity
         ReplaceFragment(homeFrag);
     }
 
-    @Override
-    public void onBackPressed()
-    {
-        android.support.v4.app.FragmentManager fm = getSupportFragmentManager();
-        if (getSupportFragmentManager().getBackStackEntryCount() > 0)
-        {
-            Boolean result = fm.popBackStackImmediate();
-        }
-        else
-        {
-            super.onBackPressed();
-        }
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
@@ -123,7 +110,7 @@ public class MainActivity extends AppCompatActivity
     private void ReplaceFragment(Fragment fragment)
     {
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.content_frame, fragment).addToBackStack(null);
+        ft.replace(R.id.content_frame, fragment);
         ft.commit();
     }
 
