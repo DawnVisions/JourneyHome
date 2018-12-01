@@ -11,6 +11,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.dawnvisions.journeyhome.Home.OnUserDataAdded;
+
 import java.util.Arrays;
 
 import database.DataSource;
@@ -19,18 +21,21 @@ import model.User;
 public class UserDialog extends DialogFragment
 {
     DataSource mDataSource;
+    OnUserDataAdded onUserDataAdded;
 
-    public static UserDialog newInstance(int arg, DataSource mDataSource)
+    public static UserDialog newInstance(int arg, DataSource mDataSource, OnUserDataAdded delegate)
     {
         UserDialog frag = new UserDialog();
         Bundle args = new Bundle();
         args.putInt("count", arg);
         frag.setArguments(args);
         frag.setDatabase(mDataSource);
+        frag.setDelegate(delegate);
         return frag;
     }
 
     public void setDatabase(DataSource database) { this.mDataSource = database; }
+    public void setDelegate(OnUserDataAdded delegate) { this.onUserDataAdded = delegate;}
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -66,6 +71,8 @@ public class UserDialog extends DialogFragment
                         user.setBirth_year(Integer.parseInt(parts[2]));
 
                         mDataSource.setUser(user);
+                        onUserDataAdded.updateUserData();
+
                     }
                 })
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {

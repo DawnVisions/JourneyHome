@@ -64,7 +64,8 @@ public class EducationItem
 
     public EducationItem()
     {
-
+        this.id = UUID.randomUUID().toString();
+        this.done = false;
     }
 
     public ContentValues toValues()

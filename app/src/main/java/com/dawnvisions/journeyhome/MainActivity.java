@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import com.dawnvisions.journeyhome.Dashboard.Dashboard;
 import com.dawnvisions.journeyhome.Education.Education;
 import com.dawnvisions.journeyhome.Home.Home;
+import com.dawnvisions.journeyhome.Home.OnUserDataAdded;
 
 import database.DataSource;
 import database.TaskSource;
@@ -22,6 +23,10 @@ import database.TaskSource;
 public class MainActivity extends AppCompatActivity
 {
     public DataSource mDataSource;
+    Home homeFrag;
+    Dashboard dashboard;
+    Education educationFrag;
+
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener()
@@ -30,20 +35,16 @@ public class MainActivity extends AppCompatActivity
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item)
         {
-            Fragment fragment;
             switch (item.getItemId())
             {
                 case R.id.navigation_home:
-                    fragment = new Home();
-                    ReplaceFragment(fragment);
+                    ReplaceFragment(homeFrag);
                     return true;
                 case R.id.navigation_dashboard:
-                    fragment = new Dashboard();
-                    ReplaceFragment(fragment);
+                    ReplaceFragment(dashboard);
                     return true;
                 case R.id.navigation_education:
-                    fragment = new Education();
-                    ReplaceFragment(fragment);
+                    ReplaceFragment(educationFrag);
                     return true;
             }
             return false;
@@ -62,11 +63,15 @@ public class MainActivity extends AppCompatActivity
 
         BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-        ReplaceFragment(new Home());
 
         mDataSource = new DataSource(this);
         mDataSource.open();
         mDataSource.getCompletedFromDatabase(TaskSource.tasks);
+
+        homeFrag = new Home();
+        dashboard = new Dashboard();
+        educationFrag = new Education();
+        ReplaceFragment(homeFrag);
     }
 
     @Override
@@ -101,7 +106,14 @@ public class MainActivity extends AppCompatActivity
         }
         if (id == R.id.toolbar_user)
         {
-            DialogFragment dialog = UserDialog.newInstance(1, mDataSource);
+            DialogFragment dialog = UserDialog.newInstance(1, mDataSource, new OnUserDataAdded()
+            {
+                @Override
+                public void updateUserData()
+                {
+                    homeFrag.displayUserInfo(homeFrag.getView());
+                }
+            });
             dialog.show(getSupportFragmentManager(), "dialog");
             return true;
         }

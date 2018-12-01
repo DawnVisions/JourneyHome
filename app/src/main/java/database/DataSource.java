@@ -123,5 +123,10 @@ public class DataSource
         values.put(EducationTable.COLUMN_DONE, done);
         database.update(EducationTable.TABLE_ITEMS, values, selection, selectionArgs);
     }
+
+    public void addEducationItem(EducationItem newItem)
+    {
+        database.insert(EducationTable.TABLE_ITEMS, null, newItem.toValues());
+    }
 }
 

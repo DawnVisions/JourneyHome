@@ -12,7 +12,9 @@
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="200dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
         android:background="@color/secondaryDarkColor"
         android:orientation="vertical"
         android:padding="10dp"
@@ -46,16 +48,16 @@
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="200dp"
+        android:layout_marginBottom="20dp"
         android:background="@color/secondaryDarkColor"
         android:orientation="vertical"
         android:padding="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/add_desc"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.7">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
         <TextView
             android:id="@+id/textView4"
@@ -83,5 +85,29 @@
             app:layoutManager="android.support.v7.widget.LinearLayoutManager" />
 
     </LinearLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/addEducation_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:clickable="true"
+        android:focusable="auto"
+        android:src="@android:drawable/ic_input_add"
+        android:tint="@color/tertiaryLightColor"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/add_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:text="Add Education Topic"
+        app:layout_constraintBottom_toBottomOf="@+id/addEducation_fab"
+        app:layout_constraintEnd_toStartOf="@+id/addEducation_fab"
+        app:layout_constraintTop_toBottomOf="@+id/addEducation_fab"
+        app:layout_constraintTop_toTopOf="@+id/addEducation_fab" />
 
 </android.support.constraint.ConstraintLayout>

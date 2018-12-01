@@ -1,10 +1,14 @@
 package com.dawnvisions.journeyhome.Education;
 
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
+import android.util.EventLog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +17,7 @@ import com.dawnvisions.journeyhome.MainActivity;
 import com.dawnvisions.journeyhome.R;
 
 import java.util.ArrayList;
+import java.util.EventListener;
 import java.util.List;
 
 import database.DataSource;
@@ -22,6 +27,8 @@ import model.EducationItem;
 public class Education extends Fragment
 {
     DataSource database;
+    List<EducationItem> skills = new ArrayList<>();
+    List<EducationItem> videos = new ArrayList<>();
 
     public Education()
     {
@@ -49,10 +56,44 @@ public class Education extends Fragment
 
         MainActivity main = (MainActivity)getActivity();
         database = main.mDataSource;
+        getFromDatabase();
 
+        final RecyclerView skillView = view.findViewById(R.id.skills_recycler);
+        final EducationAdapter skillAdapter = new EducationAdapter(view.getContext(), skills, database);
+        skillView.setAdapter(skillAdapter);
+
+        RecyclerView videoView = view.findViewById(R.id.videos_recycler);
+        final EducationAdapter videoAdapter = new EducationAdapter(view.getContext(), videos, database);
+        videoView.setAdapter(videoAdapter);
+
+        FloatingActionButton addFAB = view.findViewById(R.id.addEducation_fab);
+        addFAB.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                DialogFragment dialog = AddEdDialog.newInstance(1, database, new OnItemAdded()
+                {
+                    @Override
+                    public void onAdd()
+                    {
+                        getFromDatabase();
+                        skillAdapter.notifyDataSetChanged();
+                        videoAdapter.notifyDataSetChanged();
+
+                    }
+                });
+                dialog.show(getActivity().getSupportFragmentManager(), "dialog");
+            }
+        });
+
+    }
+
+    private void getFromDatabase()
+    {
+        skills.clear();
+        videos.clear();
         List<EducationItem> allEducation = database.getEducationFromDatabase();
-        List<EducationItem> skills = new ArrayList<>();
-        List<EducationItem> videos = new ArrayList<>();
         for (EducationItem item: allEducation)
         {
             if (item.getType().equals("skill"))
@@ -63,14 +104,6 @@ public class Education extends Fragment
                 videos.add(item);
             }
         }
-
-        RecyclerView skillView = view.findViewById(R.id.skills_recycler);
-        final EducationAdapter skillAdapter = new EducationAdapter(view.getContext(), skills, database);
-        skillView.setAdapter(skillAdapter);
-
-        RecyclerView videoView = view.findViewById(R.id.videos_recycler);
-        final EducationAdapter videoAdapter = new EducationAdapter(view.getContext(), videos, database);
-        videoView.setAdapter(videoAdapter);
     }
 
 }

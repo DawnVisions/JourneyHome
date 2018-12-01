@@ -43,12 +43,17 @@ public class Home extends Fragment
     }
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState)
+    public void onViewCreated(@NonNull final View view, @Nullable Bundle savedInstanceState)
     {
         super.onViewCreated(view, savedInstanceState);
 
         MainActivity main = (MainActivity)getActivity();
         database = main.mDataSource;
+        displayUserInfo(view);
+    }
+
+    public void displayUserInfo(@NonNull View view)
+    {
         User user = database.getUserInfo();
 
         //Get Baby name from database
