@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-
 import com.dawnvisions.journeyhome.MainActivity;
 import com.dawnvisions.journeyhome.R;
 
@@ -68,18 +67,26 @@ public class Home extends Fragment
             LocalDate birthDate = new LocalDate(2000 + user.getBirth_year(), user.getBirth_month(), user.getBirth_day());
             Period period = new Period(birthDate, now);
             TextView dateTV = view.findViewById(R.id.date_text);
+            StringBuilder sb = new StringBuilder();
+            sb.append(getString(R.string.NICU_stay));
             if(period.getMonths()>0)
             {
-                dateTV.setText("My NICU Stay: " + period.getMonths() + " months");
+                sb.append(period.getMonths());
+                sb.append(" months");
             }
             else if(period.getWeeks()>0)
             {
-                dateTV.setText("My NICU Stay: " + period.getWeeks() + " weeks and " + period.getDays() + " days");
+                sb.append(period.getWeeks());
+                sb.append(" weeks and ");
+                sb.append(period.getDays());
+                sb.append(" days");
             }
             else
             {
-                dateTV.setText("My NICU Stay: " + period.getDays() + " days");
+                sb.append(period.getDays());
+                sb.append(" days");
             }
+            dateTV.setText(sb);
 
         }
     }

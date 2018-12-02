@@ -8,5 +8,20 @@
     <string name="welcome_message">Congratulations on the birth of your baby! We consider it a privilege to care for your family.</string>
     <string name="check_list">The big day to take baby home will come soon! The Dashboard has a check list that will help you get ready.</string>
     <string name="education_list">The Education page has recommended education topics and videos. Refer to the Mother and New Baby Care Booklet for more information. </string>
+    <string name="tool_tip">Tip: You can also click on the info button next to the description for more information on this task</string>
+    <string name="video">Video</string>
+    <string name="skill">Skill</string>
+    <string name="title">Title</string>
+    <string name="new_item_hint">Sample education item</string>
+    <string name="default_name">Baby\'s Name</string>
+    <string name="my_baby">My Baby</string>
+    <string name="birthdate">Birthdate</string>
+    <string name="birthdate_hint">mm.dd.yy</string>
+    <string name="discharge_videos">Discharge Videos:</string>
+    <string name="i_know_how_to">I Know How To: </string>
+    <string name="add_education_topic">Add Education Topic</string>
+    <string name="NICU_stay">My NICU stay: </string>
+    <string name="sanford_castle_logo">Sanford castle logo</string>
+    <string name="welcome">Welcome to the Boekelheide Neonatal Intensive Care Unit</string>
 
 </resources>

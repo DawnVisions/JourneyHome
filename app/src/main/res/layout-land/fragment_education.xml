@@ -2,7 +2,6 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/ic_pattern_background"
@@ -24,11 +23,10 @@
         app:layout_constraintVertical_bias="0.496">
 
         <TextView
-            android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/cambay"
-            android:text="I Know How To: "
+            android:text="@string/i_know_how_to"
             android:textSize="18sp"
             android:textStyle="bold" />
 
@@ -57,12 +55,11 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/textView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="0dp"
             android:fontFamily="@font/cambay"
-            android:text="Discharge Videos: "
+            android:text="@string/discharge_videos"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -87,14 +84,15 @@
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/addEducation_fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
         android:clickable="true"
         android:focusable="auto"
         android:src="@android:drawable/ic_input_add"
         android:tint="@color/tertiaryLightColor"
+        app:fabCustomSize="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -104,7 +102,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:text="Add Education Topic"
+        android:text="@string/add_education_topic"
         app:layout_constraintEnd_toStartOf="@+id/addEducation_fab"
         app:layout_constraintTop_toBottomOf="@+id/addEducation_fab"
         app:layout_constraintTop_toTopOf="@+id/addEducation_fab" />

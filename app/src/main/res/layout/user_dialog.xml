@@ -12,11 +12,10 @@
             android:layout_height="match_parent" >
 
             <TextView
-                android:id="@+id/textView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="8dp"
-                android:text="Baby's Name" />
+                android:text="@string/default_name" />
 
             <android.support.design.widget.TextInputEditText
                 android:id="@+id/name_input"
@@ -25,7 +24,7 @@
                 android:inputType="textCapWords"
                 android:padding="8dp"
                 android:selectAllOnFocus="true"
-                android:text="My Baby" />
+                android:text="@string/my_baby" />
 
         </TableRow>
 
@@ -34,18 +33,17 @@
             android:layout_height="match_parent" >
 
             <TextView
-                android:id="@+id/textView5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="8dp"
-                android:text="Birthdate" />
+                android:text="@string/birthdate" />
 
             <EditText
                 android:id="@+id/birthdate_input"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="mm.dd.yy"
+                android:hint="@string/birthdate_hint"
                 android:inputType="date"
                 android:padding="8dp" />
         </TableRow>
