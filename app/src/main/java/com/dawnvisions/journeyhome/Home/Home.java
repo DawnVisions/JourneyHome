@@ -69,6 +69,7 @@ public class Home extends Fragment
             TextView dateTV = view.findViewById(R.id.date_text);
             StringBuilder sb = new StringBuilder();
             sb.append(getString(R.string.NICU_stay));
+            sb.append(": ");
             if(period.getMonths()>0)
             {
                 sb.append(period.getMonths());

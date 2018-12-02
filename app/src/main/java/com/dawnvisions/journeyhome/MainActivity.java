@@ -38,12 +38,18 @@ public class MainActivity extends AppCompatActivity
             switch (item.getItemId())
             {
                 case R.id.navigation_home:
+                    if(homeFrag == null)
+                        homeFrag = new Home();
                     ReplaceFragment(homeFrag);
                     return true;
                 case R.id.navigation_dashboard:
+                    if(dashboard == null)
+                        dashboard = new Dashboard();
                     ReplaceFragment(dashboard);
                     return true;
                 case R.id.navigation_education:
+                    if(educationFrag == null)
+                        educationFrag = new Education();
                     ReplaceFragment(educationFrag);
                     return true;
             }
@@ -69,8 +75,6 @@ public class MainActivity extends AppCompatActivity
         mDataSource.getCompletedFromDatabase(TaskSource.tasks);
 
         homeFrag = new Home();
-        dashboard = new Dashboard();
-        educationFrag = new Education();
         ReplaceFragment(homeFrag);
     }
 
